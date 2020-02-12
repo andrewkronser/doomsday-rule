@@ -1,0 +1,59 @@
+\problemname{Doomsday Rule}
+In 1973, mathmetician John Conway, invented an algorithm for quickly computing
+the day of the week (e.g. Monday, Tuesday) from any date in history. The algorithm,
+which he called the Doomsday algorithm, was designed to be simple enough to be
+computed by hand.
+
+Conway's algorithm hinges on the cyclic nature of the Gregorian calendar and consists
+of three steps.
+\begin{enumerate}
+    \item Calculate the anchor day for a given century
+    \item Calculate doomsday for the specific year. Certain dates (e.g. April 4th)
+        in every month always occur on doomdays.
+    \item Lastly, count (modulo 7) from the nearest doomsday to your desired day
+\end{enumerate}
+
+Days of the week are numbered from Sunday (with a value of $0$) through Saturday 
+(with a value of $6$). The anchor day can be found using the formula:
+
+\[a = (5\times(\lfloor{\dfrac{\text{yyyy}}{100}}\rfloor \text{ mod } 4) + 2) \text{ mod }7.\]
+
+The doomsday can then be calculated using the formula:
+
+\[d = ((y + \lfloor{\dfrac{y}{4}}\rfloor +  a) \text{ mod } 7\]
+
+Where $y = \text{yyyy  mod } 100$
+
+In every year, the following dates will occur on the doomsday:
+\begin{itemize}
+    \item January 3rd (which becomes January 4th in leap years)
+    \item February 28th (which becomes February 29th in leap years)
+    \item April 4th
+    \item May 9th
+    \item June 6th
+    \item July 11th
+    \item August 8th
+    \item September 5th
+    \item October 10th
+    \item November 7th
+    \item December 12th
+\end{itemize}
+
+Leap years occur if the year is evenly divisible by 4 but not 100. They
+also occur in years divisible by 400. 2000 was a leap year, but 2200 will
+be a common year.
+\section*{Input}
+The first line contains the number of test cases $1 \leq n \leq 10,000$ followed
+by $n$ test cases, one per line. Each test case is in the format \textbf{dd month yyyy}
+where $\text{month} \in \{$January, February, March, April, May, June, July, August,
+September, October, November, December$\}$, $1 \leq \text{dd} \leq 31$, and $0 \leq
+\text{yyyy} \leq 3,000$. All years are CE (AD) in the Gregorian Calendar and leading
+zeroes won't be present.
+
+For dates before the implementation of the Gregorian Calender, use the proleptic
+Gregorian Calendar instead of the Julian Calendar. This way, Conway's Doomsday algorithm
+applies consistently over all input dates.
+\section*{Output}
+Output the day of the week for each line of the input in the same order one
+day per line. Day names are case-insensitive but abbreviations will not
+be accepted.

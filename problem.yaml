@@ -1,0 +1,7 @@
+source: Baylor University 2017
+author: Andrew J. Kronser, Sean Lavoie
+license: cc by-sa
+
+limits:
+    time_multiplier: 4
+    time_safety_margin: 2
